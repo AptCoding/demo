@@ -33,9 +33,8 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
     setSelectedPrize(null);
     setShowConfetti(false);
 
-    // Small wiggle before spinning
-    const anticipationRotation = rotation + (Math.random() - 0.5) * 20; // Small random wiggle
-    setRotation(anticipationRotation);
+    // Small wiggle before spinning (visual only)
+    setRotation((Math.random() - 0.5) * 20);
 
     setTimeout(() => {
       setIsAnticipating(false);
@@ -44,17 +43,14 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
       // Generate random rotation with more realistic physics
       const randomIndex = Math.floor(Math.random() * prizes.length);
       const segmentAngle = 360 / prizes.length;
-      
-      // Calculate the exact angle where we want to stop (center of the winning segment)
-      const targetSegmentCenter = randomIndex * segmentAngle + (segmentAngle / 2);
-      
+      // Calculate the exact angle where we want to stop (center of the winning segment), adjusted for pointer at top (-90°)
+      const targetSegmentCenter = randomIndex * segmentAngle + (segmentAngle / 2) - 90;
       // Add multiple rotations for dramatic effect (3-5 full rotations)
       const minRotations = 3;
       const maxRotations = 5;
       const extraRotations = minRotations + Math.random() * (maxRotations - minRotations);
-      
       // Calculate final rotation to land on the target
-      const finalRotation = anticipationRotation + (extraRotations * 360) + targetSegmentCenter;
+      const finalRotation = (extraRotations * 360) + targetSegmentCenter;
 
       setRotation(finalRotation);
 
@@ -63,7 +59,6 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
         setIsSpinning(false);
         setSelectedPrize(prizes[randomIndex].text);
         setShowConfetti(true);
-        
         // Hide confetti after celebration
         setTimeout(() => setShowConfetti(false), 3000);
       }, 3500);
@@ -217,9 +212,8 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
         </div>
 
         {/* Pointer */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 z-30">
-          <div className="w-0 h-0 border-l-6 border-r-6 border-b-12 border-l-transparent border-r-transparent border-b-red-600 drop-shadow-lg"></div>
-          <div className="w-4 h-4 bg-red-600 rounded-full transform -translate-x-1/2 -translate-y-1 border-2 border-white"></div>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-30">
+          <div className="w-0 h-0 border-l-10 border-r-10 border-t-24 border-l-transparent border-r-transparent border-t-red-600 drop-shadow-lg"></div>
         </div>
 
         {/* Glow effect when spinning */}
