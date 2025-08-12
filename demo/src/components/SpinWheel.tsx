@@ -184,12 +184,12 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
                       textAnchor="middle"
                       dominantBaseline="middle"
                       fill="white"
-                      fontSize="16"
+                      fontSize="10"
                       fontWeight="bold"
-                      filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.8))"
+                      filter="drop-shadow(1px 1px 1px rgba(0,0,0,0.8))"
                     >
-                      <tspan x="0" dy="-8">{prize.text}</tspan>
-                      <tspan x="0" dy="16" fontSize="12">{prize.description}</tspan>
+                      <tspan x="0" dy="-5">{prize.text}</tspan>
+                      <tspan x="0" dy="10" fontSize="8">{prize.description}</tspan>
                     </text>
                   </g>
                 </g>
