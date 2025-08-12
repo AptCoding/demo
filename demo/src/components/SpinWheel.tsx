@@ -95,7 +95,7 @@ export default function SpinWheel({ userName, onBackToStart }: SpinWheelProps) {
 
       <div className="relative mx-auto w-80 h-80 mb-8">
         {/* Confetti Animation */}
-        {showConfetti && (
+        {showConfetti && isSpinning && (
           <div className="absolute inset-0 pointer-events-none z-30">
             {[...Array(20)].map((_, i) => (
               <div

@@ -28,7 +28,7 @@ export default function NameInput({ onSubmit }: NameInputProps) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
-            className="w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-300 text-lg text-center placeholder-gray-400"
+            className="w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-300 text-lg text-center placeholder-gray-400 text-black"
             required
           />
         </div>
